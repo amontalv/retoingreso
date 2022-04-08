@@ -1,0 +1,34 @@
+apply plugin: 'java'
+//comando para generar reporte - gradle clean test aggregate
+apply plugin: 'net.serenity-bdd.aggregator'
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.4.34")
+    }
+}
+
+
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+
+dependencies {
+    implementation group: 'net.serenity-bdd', name: 'serenity-junit', version: '3.2.3'
+    implementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version: '3.2.0'
+    implementation group: 'net.serenity-bdd', name: 'serenity-core', version: '3.2.3'
+    implementation group: 'net.serenity-bdd', name: 'serenity-screenplay', version: '3.2.3'
+}
+
+test {
+    ignoreFailures = true
+}
+
+gradle.startParameter.continueOnFailure = true
